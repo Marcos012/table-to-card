@@ -4,26 +4,46 @@
   </mat-form-field>
 </div>
 
-<div class="example-container mat-elevation-z8">
+<div class="mat-elevation-z8" (matSortChange)="sort">
   <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <span class="mobile-label">Id :</span>
+        <div class="mobile-content">
+          <span [innerHTML]="row.id"></span>
+        </div>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="nome">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.nome}} </mat-cell>
+      <mat-cell *matCellDef="let row">
+        <span class="mobile-label">Nome :</span>
+        <div class="mobile-content">
+          <span [innerHTML]="row.nome"></span>
+        </div>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="idade">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Idade </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.idade}} </mat-cell>
+      <mat-cell *matCellDef="let row">
+        <span class="mobile-label">Idade :</span>
+        <div class="mobile-content">
+          <span [innerHTML]="row.idade"></span>
+        </div>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="profissao">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Profissão </mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.profissao}} </mat-cell>
+      <mat-cell *matCellDef="let row">
+        <span class="mobile-label">Profifssão :</span>
+        <div class="mobile-content">
+          <span [innerHTML]="row.profissao"></span>
+        </div>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

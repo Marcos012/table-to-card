@@ -10,15 +10,14 @@ import { Pessoa } from '../models/pessoa';
 })
 export class DataTableComponent {
   displayedColumns = ['id', 'nome', 'idade', 'profissao'];
-  dataSource = new MatTableDataSource(pessoas);
+  dataSource: MatTableDataSource<Pessoa>;
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
   constructor() {
-    // const users: Pessoa[] = pessoas;
-    // console.log(users);
-    // this.dataSource = new MatTableDataSource(users);
+    const dados: Pessoa[] = Array.from(pessoas);
+    this.dataSource = new MatTableDataSource(dados);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }

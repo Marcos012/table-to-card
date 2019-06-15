@@ -1,4 +1,6 @@
-export const pessoas: any = [
+import { Pessoa } from './../models/pessoa';
+
+export const pessoas: Pessoa[] = [
     {
         id: 10199, nome: 'Marcos Paulo', idade: 19, profissao: 'Desenvolvedor'
     },

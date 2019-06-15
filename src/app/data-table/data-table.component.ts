@@ -1,5 +1,5 @@
 import { pessoas } from './../mock/pessoas-mock';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { Pessoa } from '../models/pessoa';
 
@@ -8,16 +8,19 @@ import { Pessoa } from '../models/pessoa';
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss']
 })
-export class DataTableComponent {
+export class DataTableComponent implements OnInit {
   displayedColumns = ['id', 'nome', 'idade', 'profissao'];
   dataSource: MatTableDataSource<Pessoa>;
 
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor() {
     const dados: Pessoa[] = Array.from(pessoas);
     this.dataSource = new MatTableDataSource(dados);
+  }
+
+  ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
